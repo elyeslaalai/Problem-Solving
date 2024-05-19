@@ -15,22 +15,13 @@ class Solution(object):
             'M': 1000
         }
 
-        res = 0
+        ans = 0
 
         for i in range(len(s)):
-            char = s[i]
-            if (i == len(s) - 1) or (char != 'I' and char != 'X' and char != 'C'):
-                res += mapping[char]
+            if i < len(s) - 1 and mapping[s[i]] < mapping[s[i + 1]]:
+                ans -= mapping[s[i]]
             else:
-                nextchar = s[i + 1]
-                if char == 'I' and (nextchar == 'V' or nextchar == 'X'):
-                    res -= mapping[char]
-                elif char == 'X' and (nextchar == 'L' or nextchar == 'C'):
-                    res -= mapping[char]
-                elif char == 'C' and (nextchar == 'D' or nextchar == 'M'):
-                    res -= mapping[char]
-                else:
-                    res += mapping[char]
-        
-        return res
+                ans += mapping[s[i]]
+
+        return ans
 
