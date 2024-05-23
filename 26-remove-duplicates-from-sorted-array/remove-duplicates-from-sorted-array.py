@@ -4,12 +4,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        k = 0
-        hset = set()
-        for i in range(len(nums)):
+        
+        recent_num = nums[0]
+        k = 1
+
+        for i in range(1, len(nums)):
             num = nums[i]
-            if num not in hset:
-                hset.add(num)
+            if num != recent_num:
+                recent_num = num
                 nums[k] = num
                 k += 1
+        
         return k
+            
+
