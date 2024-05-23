@@ -9,10 +9,9 @@ class Solution(object):
         k = 1
 
         for i in range(1, len(nums)):
-            num = nums[i]
-            if num != recent_num:
-                recent_num = num
-                nums[k] = num
+            if nums[i] != recent_num:
+                recent_num = nums[i]
+                nums[k] = nums[i]
                 k += 1
         
         return k
