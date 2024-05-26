@@ -4,11 +4,11 @@ class Solution(object):
         :type digits: List[int]
         :rtype: List[int]
         """
-        
-        i = len(digits) - 1
-        carry = 1
-        while i >= 0:
-            digits[i], carry =  (digits[i] + carry) % 10, (digits[i] + carry) / 10
-            i -= 1
-        return [1] + digits if digits[0] == 0 else digits
+        for i in range(len(digits) - 1, -1, -1):
+            if digits[i] == 9:
+                digits[i] = 0
+            else:
+                digits[i] += 1
+                return digits
+        return [1] + digits
         
