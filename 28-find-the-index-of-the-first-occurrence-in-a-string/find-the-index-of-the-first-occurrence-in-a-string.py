@@ -5,8 +5,6 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
-        if len(needle) > len(haystack):
-            return -1
         
         i = 0
         while i < len(haystack) - len(needle) + 1:
