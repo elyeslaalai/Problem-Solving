@@ -4,11 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        memo = set()
+        ans = 0 
         for num in nums:
-            if num in memo:
-                memo.remove(num)
-            else:
-                memo.add(num)
-        return memo.pop()
+            ans ^= num
+        return ans
         
