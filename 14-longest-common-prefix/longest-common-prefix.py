@@ -5,15 +5,18 @@ class Solution(object):
         :rtype: str
         """
 
-        res = []
-        strs = sorted(strs)
-        first, last = strs[0], strs[-1]
+        min_str = min(strs)
+        max_str = max(strs)
+        min_len = min(len(min_str), len(max_str))
+        ans = []
 
-        for i in range(min(len(first), len(last))):
-            if first[i] != last[i]:
-                return ''.join(res)
+        for i in range(min_len):
+            if min_str[i] == max_str[i]:
+                letter = min_str[i]
+                ans.append(letter)
             else:
-                res.append(first[i])
+                return "".join(ans)
         
-        return ''.join(res)
+        return "".join(ans)
+
 
