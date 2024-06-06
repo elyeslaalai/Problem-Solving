@@ -5,20 +5,23 @@ class Solution(object):
         :type b: str
         :rtype: str
         """
-        ans = []  
-        length_diff = abs(len(a) - len(b))
-        if len(a) < len(b):
-            a = '0' * length_diff + a
-        else:
-            b = '0' * length_diff + b
+
+        i = len(a) - 1
+        j = len(b) - 1
+        ans = []
         carry = 0
-        for i in range(len(a) - 1, -1, -1):
-            temp_sum = int(a[i]) + int(b[i]) + carry
-            ans.append(str(temp_sum % 2))
-            carry = temp_sum / 2
-        if carry != 0:
-            ans.append('1')
-        ans = ans[::-1]
-        return ''.join(ans)
+
+        while i >= 0 or j >= 0 or carry > 0:
+
+            digit_a = int(a[i]) if i >= 0 else 0
+            digit_b = int(b[j]) if j >= 0 else 0 
+            the_sum = digit_a + digit_b + carry
+            ans.append(str(the_sum % 2))
+            carry = the_sum / 2
+            i, j = i - 1, j - 1
         
+        ans = ans[::-1]
+        return "".join(ans)
+            
+
 
