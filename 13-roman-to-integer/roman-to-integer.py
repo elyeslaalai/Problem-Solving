@@ -22,6 +22,6 @@ class Solution(object):
                 ans -= mapping[s[i]]
             else:
                 ans += mapping[s[i]]
-
+    
         return ans
 
