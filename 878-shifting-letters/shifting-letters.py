@@ -6,9 +6,6 @@ class Solution(object):
         :rtype: str
         """
         
-        if not s or not shifts:
-            return ""
-        
         total_shifts = []
         temp_sum = sum(shifts)
 
