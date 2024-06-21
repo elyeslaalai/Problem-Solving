@@ -14,23 +14,20 @@ class Solution(object):
         if not head:
             return head
         
-        tail, length = head, 1
-        while tail.next:
-            tail = tail.next
+        temp, length = head, 1
+        while temp.next:
             length += 1
-        
-        if n == length:
+            temp = temp.next
+
+        if length == 1 or length == n:
             return head.next
         
-        temp, i = head, 1
-
-        while i < length - n:
+        temp, counter = head, 1
+        while counter < length - n:
+            counter += 1
             temp = temp.next
-            i += 1
-
+        
         temp.next = temp.next.next
         return head
-
-
-
+        
 
