@@ -11,40 +11,27 @@ class Solution(object):
         :rtype: ListNode
         """
         
-        # edge cases
-        if not head or not head.next or k == 0:
+        # edge cases:
+        if not head or not head.next:
             return head
-
-        length = 0
-        temp = head
-
-        while temp:
+        
+        if not k or k == 0:
+            return head
+        
+        tail, length = head, 1
+        while tail.next:
             length += 1
-            tail = temp
-            temp = temp.next
-        
-        rotations = k % length
-
-        if rotations == 0:
-            return head
-        
-        dummyHead = ListNode(-1)
-
-        temp, i = head, 1
-        while i < length - rotations:
-            temp = temp.next
-            i += 1
-
-        prev = temp
-        curr = temp.next
-
-
-        dummyHead.next = curr
+            tail = tail.next
         tail.next = head
-        prev.next = None
+    
+        temp, k = head, k % length
+        for _ in range(length - k - 1):
+            temp = temp.next
+        answer = temp.next
+        temp.next = None
 
-        return dummyHead.next 
-        
+        return answer
+
 
         
 
