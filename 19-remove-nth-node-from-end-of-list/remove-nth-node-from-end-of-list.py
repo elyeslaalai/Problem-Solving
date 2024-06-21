@@ -27,8 +27,6 @@ class Solution(object):
         while i < length - n:
             temp = temp.next
             i += 1
-        
-        print(temp.val)
 
         temp.next = temp.next.next
         return head
