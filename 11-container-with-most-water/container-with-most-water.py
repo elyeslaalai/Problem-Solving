@@ -8,7 +8,7 @@ class Solution(object):
         l, r = 0, len(height) - 1
         max_water = 0
 
-        while l <= len(height) - 1 and r >= 0:
+        while l < r:
 
             water = min(height[l], height[r]) * (r - l)
             max_water = max(water, max_water)
