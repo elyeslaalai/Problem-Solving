@@ -16,9 +16,5 @@ class Solution(object):
             else:
                 anagrams[sorted_s].append(s)
         
-        res = []
-        for anag in anagrams:
-            res.append(anagrams[anag])
-        
-        return res
+        return anagrams.values()
         
