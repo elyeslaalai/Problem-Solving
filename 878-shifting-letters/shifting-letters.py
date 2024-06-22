@@ -6,22 +6,31 @@ class Solution(object):
         :rtype: str
         """
         
-        total_shifts = []
-        temp_sum = sum(shifts)
+        if len(s) == 0:
+            return ""
+        
+        sum_shifts = sum(shifts)
 
-        for shift in shifts:
-            total_shifts.append(temp_sum)
-            temp_sum -= shift
-
-        list_s = list(s)
+        for i in range(len(shifts)):
+            temp = shifts[i]
+            shifts[i] = sum_shifts
+            sum_shifts -= temp
+        
+        new_str = []
 
         for i in range(len(s)):
 
-            char = s[i]
-            shift = total_shifts[i]
-            list_s[i] = chr( ord('a') + (ord(char) - ord('a') + shift) % 26 )
+            char, shift = s[i], shifts[i]
+
+            new_char = chr( ord('a') + (ord(char) - ord('a') + shift) % 26)
+
+            new_str.append(new_char)
         
-        return "".join(list_s)
+        return "".join(new_str)
+
+
+
+
 
 
 
