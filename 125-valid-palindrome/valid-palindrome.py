@@ -9,14 +9,11 @@ class Solution(object):
 
         while l < r:
 
-            while l < len(s) and not s[l].isalnum():
+            while l < r and not s[l].isalnum():
                 l += 1
             
-            while r >= 0 and not s[r].isalnum():
+            while l < r and not s[r].isalnum():
                 r -= 1
-            
-            if l >= r:
-                return True
 
             if s[l].upper() != s[r].upper():
                 return False
