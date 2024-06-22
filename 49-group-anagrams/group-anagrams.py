@@ -4,8 +4,6 @@ class Solution(object):
         :type strs: List[str]
         :rtype: List[List[str]]
         """
-        if len(strs) == 1:
-            return [strs]
         
         anagrams = dict()
 
