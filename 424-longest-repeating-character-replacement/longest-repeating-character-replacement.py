@@ -5,29 +5,15 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        
-
-        freqs = [0] * 26
-        l = r = 0
-        longest_streak = 0
-        highest_freq = 0
-
-        while l <= r and r < len(s):
-            new_char = s[r]
-            freqs[ ord(new_char) - ord('A') ] += 1
-            for i in range(len(freqs)):
-                if freqs[i] > highest_freq:
-                    highest_freq = freqs[i]
-            length_window = r - l + 1
-            if length_window - highest_freq > k:
-                char_to_remove = s[l]
-                freqs[ ord(char_to_remove) - ord('A') ] -= 1
+        count = {}
+        l = ans = 0
+        for r in range(len(s)):
+            count[s[r]] = 1 + count.get(s[r], 0)
+            while (r - l + 1) - max(count.values()) > k:
+                count[s[l]] -= 1
                 l += 1
-            else:
-                longest_streak = max(longest_streak, length_window)
-            r += 1
-        
-        return longest_streak
+            ans = max(ans, r - l + 1)
+        return ans
         
 
 
