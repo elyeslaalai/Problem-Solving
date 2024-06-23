@@ -4,6 +4,10 @@ class Solution(object):
         :type wall: List[List[int]]
         :rtype: int
         """
+        # number of rows             = n
+        # max number of bricks / row = m
+        # time complexity:  O(n * m)
+        # space complexity: O(n * m)
         for row in wall:
             length = 0
             for i in range(len(row)):
@@ -20,14 +24,5 @@ class Solution(object):
         if not freqs.values():
             return len(wall)
         
-        max_element, max_freq = -1, 0
-        for element in freqs:
-            if freqs[element] > max_freq:
-                max_element = element
-                max_freq = freqs[element]
-
-        res = 0 
-        for row in wall:
-            if max_element not in row:
-                res += 1
-        return res
+        else:
+            return len(wall) - max(freqs.values())
