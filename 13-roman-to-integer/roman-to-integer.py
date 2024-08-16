@@ -4,8 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-
-        mapping = {
+        rules = {
             'I': 1,
             'V': 5,
             'X': 10,
@@ -15,13 +14,26 @@ class Solution(object):
             'M': 1000
         }
 
-        ans = 0
+        couples = [
+            ('I', 'V'),
+            ('I', 'X'),
+            ('X', 'L'),
+            ('X', 'C'),
+            ('C', 'D'),
+            ('C', 'M')
+        ]
+
+        res = 0
 
         for i in range(len(s)):
-            if i < len(s) - 1 and mapping[s[i]] < mapping[s[i + 1]]:
-                ans -= mapping[s[i]]
+            char = s[i]
+            if i != len(s) - 1:
+                next_char = s[i + 1]
+                if (char, next_char) in couples:
+                    res -= rules[char]
+                else:
+                    res += rules[char]
             else:
-                ans += mapping[s[i]]
-    
-        return ans
-
+                res += rules[char]
+        
+        return res
