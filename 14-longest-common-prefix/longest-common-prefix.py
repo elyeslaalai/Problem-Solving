@@ -4,19 +4,24 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-
-        min_str = min(strs)
-        max_str = max(strs)
-        min_len = min(len(min_str), len(max_str))
-        ans = []
-
-        for i in range(min_len):
-            if min_str[i] == max_str[i]:
-                letter = min_str[i]
-                ans.append(letter)
-            else:
-                return "".join(ans)
         
-        return "".join(ans)
+        strs = sorted(strs)
+
+        if not strs[0]:
+            return ""
+        
+        res = []
+        first = strs[0]
+        last = strs[-1]
+        
+        for i in range(len(first)):
+
+            if first[i] == last[i]:
+                res.append(first[i])
+            
+            else:
+                return "".join(res)
+        
+        return "".join(res)
 
 
