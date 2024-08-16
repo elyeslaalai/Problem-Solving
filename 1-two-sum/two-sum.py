@@ -5,10 +5,12 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        hset = dict()
+        num_index = {}
         for i in range(len(nums)):
             num = nums[i]
-            comp = target - num
-            if target - num in hset:
-                return [i, hset[comp]]
-            hset[num] = i
+            complement = target - num
+            if complement in num_index:
+                return [i, num_index[complement]]
+            num_index[num] = i
+        
+        
