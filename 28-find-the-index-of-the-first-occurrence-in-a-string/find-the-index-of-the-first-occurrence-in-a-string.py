@@ -6,10 +6,18 @@ class Solution(object):
         :rtype: int
         """
         
+        if len(needle) > len(haystack):
+            return -1
+        
         i = 0
-        while i < len(haystack) - len(needle) + 1:
-            if haystack[i: i + len(needle)] == needle:
+        j = len(needle)
+
+        while j <= len(haystack):
+
+            if haystack[i:j] == needle:
                 return i
+            
             i += 1
+            j += 1
         
         return -1
