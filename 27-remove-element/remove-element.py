@@ -6,13 +6,14 @@ class Solution(object):
         :rtype: int
         """
         
-        k = 0
+        i = 0 
 
-        for i in range(len(nums)):
-            num = nums[i]
+        for j in range(len(nums)):
+
+            num = nums[j]
+
             if num != val:
-                nums[k] = num
-                k += 1
+                nums[i] = num
+                i += 1
         
-        return k
-
+        return i
