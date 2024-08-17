@@ -17,4 +17,4 @@ class Solution(object):
             else:
                 digits[i] = 0
         
-        return digits if digits[0] else [1] + digits
+        return [1] + digits
