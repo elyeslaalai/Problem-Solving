@@ -11,29 +11,30 @@ class Solution(object):
         :rtype: Optional[ListNode]
         """
         
-        dummy = ListNode(0)
-        temp = dummy
+        if not list1:
+            return list2
 
-        while list1 or list2:
+        if not list2:
+            return list1
+        
+        temp = dummy = ListNode()
 
-            if not list1:
-                temp.next = list2
-                return dummy.next
-            
-            elif not list2:
+        while list1 and list2:
+
+            if list1.val <= list2.val:
                 temp.next = list1
-                return dummy.next
-            
+                list1 = list1.next
+
             else:
-                num1 = list1.val
-                num2 = list2.val
-                if num1 <= num2:
-                    temp.next = list1
-                    list1 = list1.next
-                else:
-                    temp.next = list2
-                    list2 = list2.next
+                temp.next = list2
+                list2 = list2.next
             
             temp = temp.next
+        
+        if list1:
+            temp.next = list1
+        
+        if list2:
+            temp.next = list2
         
         return dummy.next
