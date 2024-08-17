@@ -5,16 +5,11 @@ class Solution(object):
         :rtype: int
         """
         
-        i = len(s) - 1
-
-        while i >= 0 and not s[i].isalnum():
-            i -= 1
-        
-        res = 0
-        
-        while i >= 0 and s[i] != ' ':
-            i -=1
-            res +=1 
-        
-
-        return res
+        length_last_word = 0
+        tail = len(s) - 1
+        while tail >= 0 and s[tail] == ' ':
+            tail -= 1
+        while tail >= 0 and s[tail] != ' ':
+            tail -= 1
+            length_last_word += 1
+        return length_last_word
