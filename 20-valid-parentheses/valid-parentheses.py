@@ -4,12 +4,28 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        rules = {'(': ')', '[': ']', '{': '}'}
+
+        couples = {
+            '[': ']',
+            '(': ')',
+            '{': '}'
+        }
+
         stack = []
+
         for c in s:
-            if c in rules:
+
+            if c in couples:
                 stack.append(c)
+            
             else:
-                if not stack or c != rules[stack.pop()]:
+                if not stack:
                     return False
-        return not stack
+                else:
+                    popped = stack.pop()
+                    if couples[popped] != c:
+                        return False
+
+        return not stack  
+
+
