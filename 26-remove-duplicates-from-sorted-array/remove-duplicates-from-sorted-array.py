@@ -4,16 +4,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
-        recent_num = nums[0]
-        k = 1
 
-        for i in range(1, len(nums)):
-            if nums[i] != recent_num:
-                recent_num = nums[i]
-                nums[k] = nums[i]
-                k += 1
-        
-        return k
-            
+        i = 1
 
+        temp = nums[0]
+
+        for j in range(1, len(nums)):
+
+            num = nums[j]
+
+            if num != temp:
+
+                nums[i] = num
+                temp = num
+                i += 1
+        
+        return i
+
+
+        
