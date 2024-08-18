@@ -6,6 +6,7 @@ class Solution(object):
         """
 
         res = []
+        first = strs[0]
         
         for i in range(len(strs[0])):
             char = strs[0][i]
