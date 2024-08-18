@@ -6,22 +6,33 @@ class Solution(object):
         :rtype: str
         """
 
+        res = []
+        carry = 0
         i = len(a) - 1
         j = len(b) - 1
-        ans = []
-        carry = 0
 
-        while i >= 0 or j >= 0 or carry > 0:
+        while i >= 0 or j >= 0:
+            if i < 0:
+                digit_a = 0
+            else:
+                digit_a = int(a[i])
+            if j < 0:
+                digit_b = 0
+            else:
+                digit_b = int(b[j])
+            the_sum = carry + digit_a + digit_b
+            res.append(str(the_sum % 2))
+            carry = the_sum / 2  
+            i -= 1
+            j -= 1
 
-            digit_a = int(a[i]) if i >= 0 else 0
-            digit_b = int(b[j]) if j >= 0 else 0 
-            the_sum = digit_a + digit_b + carry
-            ans.append(str(the_sum % 2))
-            carry = the_sum / 2
-            i, j = i - 1, j - 1
+        if carry:
+            res.append("1")
         
-        ans = ans[::-1]
-        return "".join(ans)
-            
-
-
+        res = res[::-1]
+        print(res)
+        
+        return "".join(res)
+        
+        
+        
