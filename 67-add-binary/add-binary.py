@@ -6,21 +6,20 @@ class Solution(object):
         :rtype: str
         """
 
+        # Time Complexity: O( max(N, M) )
+        # Space Complexity: O( max(N, M) )
+
         res = []
         carry = 0
         i = len(a) - 1
         j = len(b) - 1
 
         while i >= 0 or j >= 0:
-            if i < 0:
-                digit_a = 0
-            else:
-                digit_a = int(a[i])
-            if j < 0:
-                digit_b = 0
-            else:
-                digit_b = int(b[j])
-            the_sum = carry + digit_a + digit_b
+            the_sum = carry
+            if i >= 0:
+                the_sum += int(a[i])
+            if j >= 0:
+                the_sum += int(b[j])
             res.append(str(the_sum % 2))
             carry = the_sum / 2  
             i -= 1
@@ -29,9 +28,7 @@ class Solution(object):
         if carry:
             res.append("1")
         
-        res = res[::-1]
-        print(res)
-        
+        res = res[::-1]      
         return "".join(res)
         
         
