@@ -19,7 +19,3 @@ class Solution(object):
                 l = mid + 1
         
         return l
-
-        # 1 3 5 6
-        # r, l = 0 [1]
-        # 
