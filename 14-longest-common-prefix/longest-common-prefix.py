@@ -4,24 +4,18 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-        
-        strs = sorted(strs)
 
-        if not strs[0]:
-            return ""
-        
         res = []
-        first = strs[0]
-        last = strs[-1]
         
-        for i in range(len(first)):
-
-            if first[i] == last[i]:
-                res.append(first[i])
-            
-            else:
-                return "".join(res)
+        for i in range(len(strs[0])):
+            char = strs[0][i]
+            for j in range(1, len(strs)):
+                if i >= len(strs[j]) or strs[j][i] != char:
+                    return "".join(res)
+            res.append(char)
         
         return "".join(res)
+
+
 
 
