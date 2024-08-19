@@ -10,10 +10,13 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
+        def helper(root, result):
+            if not root:
+                return
+            helper(root.left, result)
+            result.append(root.val)
+            helper(root.right, result)
+        result = []
+        helper(root, result)
+        return result
 
-        if not root:
-            return []
-        
-        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
-        
-        
