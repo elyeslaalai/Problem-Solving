@@ -10,15 +10,18 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        def comparison(p, q):
-            if not p and q:
-                return False
-            elif p and not q:
-                return False
-            elif not p and not q:
+        
+        if not root:
+            return True
+
+        def helper(left, right):
+
+            if not left and not right:
                 return True
-            else:
-                curr_check = p.val == q.val
-                next_checks = comparison(p.left, q.right) and comparison(p.right, q.left)
-                return curr_check and next_checks
-        return comparison(root.left, root.right)
+            
+            if not left or not right:
+                return False
+            
+            return left.val == right.val and helper(left.left, right.right) and helper(left.right, right.left)
+        
+        return helper(root.left, root.right)
