@@ -4,11 +4,18 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n == 0 or n == 1:
-            return 1
-        prev, curr = 1, 1
-        for i in range(2, n + 1, 1):
-            temp = curr
-            curr = prev + curr
-            prev = temp
-        return curr
+        
+        past = {
+            1: 1,
+            2: 2
+        }
+
+        def helper(n):
+
+            if n not in past:
+                past[n] = helper(n - 1) + helper(n - 2)
+            
+            return past[n]
+        
+        return helper(n)
+        
