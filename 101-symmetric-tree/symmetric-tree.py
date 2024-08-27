@@ -10,18 +10,15 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        
-        if not root:
-            return True
 
         def helper(left, right):
 
             if not left and not right:
                 return True
             
-            if not left or not right:
+            if not left or not right or left.val != right.val:
                 return False
             
-            return left.val == right.val and helper(left.left, right.right) and helper(left.right, right.left)
+            return helper(left.left, right.right) and helper(left.right, right.left)
         
         return helper(root.left, root.right)
