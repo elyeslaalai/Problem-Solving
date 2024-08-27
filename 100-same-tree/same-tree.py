@@ -12,10 +12,13 @@ class Solution(object):
         :rtype: bool
         """
 
+        # Time Complexity: O( min (n, m) )
+        # Space Complextiy:  O( min (n, m) )
+
         if not p and not q:
             return True
         
-        if not p or not q:
+        if not p or not q or p.val != q.val:
             return False
         
-        return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
