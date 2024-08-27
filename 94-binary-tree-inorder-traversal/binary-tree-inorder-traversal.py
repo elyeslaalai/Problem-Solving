@@ -12,11 +12,13 @@ class Solution(object):
         """
         def helper(root, result):
             if not root:
-                return
+                return []
             helper(root.left, result)
             result.append(root.val)
             helper(root.right, result)
+        
         result = []
         helper(root, result)
+
         return result
 
