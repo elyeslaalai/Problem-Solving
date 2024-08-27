@@ -11,13 +11,19 @@ class Solution(object):
         :rtype: TreeNode
         """
         
-        if not nums:
-            return None
         
-        mid = len(nums) / 2
-        root = TreeNode(nums[mid])
-        root.left = self.sortedArrayToBST(nums[:mid])
-        root.right = self.sortedArrayToBST(nums[mid+1:])
+        def helper(nums, low, high):
 
-        return root
+            if low > high:
+                return None
+            
+            mid = (low + high) / 2
+            root = TreeNode(nums[mid])
 
+            root.left = helper(nums, low, mid - 1)
+            root.right = helper(nums, mid + 1, high)
+
+            return root
+
+        
+        return helper(nums, 0, len(nums) - 1)
