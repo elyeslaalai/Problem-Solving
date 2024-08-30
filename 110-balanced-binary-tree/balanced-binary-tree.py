@@ -11,17 +11,14 @@ class Solution(object):
         :rtype: bool
         """
 
-        def depth(root):
-            if not root:
-                return 0
-            if not root.left:
-                return 1 + depth(root.right)
-            if not root.right:
-                return 1 + depth(root.left)
-            return 1 + max(depth(root.left), depth(root.right))
-        
-        if not root:
-            return True
-        
-        return abs(depth(root.left) - depth(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
+        def dfs(root):
 
+            if not root:
+                return [True, 0]
+            
+            left, right = dfs(root.left), dfs(root.right)
+            balanced = left[0] and right[0] and abs(left[1] - right[1]) <= 1
+
+            return [balanced, 1 + max(left[1], right[1])]
+        
+        return dfs(root)[0]
