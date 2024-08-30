@@ -11,7 +11,7 @@ class Solution(object):
         :type targetSum: int
         :rtype: bool
         """
-        
+
         if not root:
             return False
         
