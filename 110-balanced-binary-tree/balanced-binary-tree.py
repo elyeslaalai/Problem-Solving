@@ -10,13 +10,18 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        def check(root):
+
+        def depth(root):
             if not root:
                 return 0
-            left = check(root.left)
-            right = check(root.right)
-            if left == -1 or right == -1 or abs(left - right) > 1:
-                return -1
-            return 1 + max(left, right)
+            if not root.left:
+                return 1 + depth(root.right)
+            if not root.right:
+                return 1 + depth(root.left)
+            return 1 + max(depth(root.left), depth(root.right))
         
-        return check(root) != -1
+        if not root:
+            return True
+        
+        return abs(depth(root.left) - depth(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
+
