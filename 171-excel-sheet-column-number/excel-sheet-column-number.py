@@ -10,9 +10,8 @@ class Solution(object):
 
         for i in range(len(columnTitle) - 1, -1, -1):
 
-            char = columnTitle[i]
-            result += temp * (ord(char) - ord('A') + 1)
+            character = columnTitle[i]
+            result += temp * (ord(character) - ord('A') + 1)
             temp *= 26
 
         return result
-
