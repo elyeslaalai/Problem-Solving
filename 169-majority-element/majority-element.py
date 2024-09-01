@@ -5,9 +5,21 @@ class Solution(object):
         :rtype: int
         """
 
-        hmap = {}
-        for num in nums:
-            hmap[num] = hmap.get(num, 0) + 1
-            if hmap[num] > len(nums) / 2:
-                return num
+        maj, occ = nums[0], 1
+
+        for i in range(1, len(nums)):
+            num = nums[i]
+            if num == maj:
+                occ += 1
+            else:
+                occ -= 1
+                if occ < 0:
+                    maj = num
+                    occ = 1
+        
+        return maj
+            
+
+
+
         
