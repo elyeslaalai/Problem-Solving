@@ -10,6 +10,12 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        if not root:
-            return []
-        return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
+        result = []
+        def dfs(root, result):
+            if not root:
+                return
+            result.append(root.val)
+            dfs(root.left, result)
+            dfs(root.right, result)
+            return result
+        return dfs(root, result)
