@@ -4,14 +4,16 @@ class Solution(object):
         :type columnNumber: int
         :rtype: str
         """
-        ans = []
-        n = columnNumber
-        while(n > 0):
-            n -= 1
-            curr = n % 26
-            n = int(n / 26)
-            ans.append(chr(curr + ord('A')))
         
-        return ''.join(ans[::-1])
+        result = []
 
+        while columnNumber:
+            
+            offset = (columnNumber - 1) % 26
+            
+            result.append(chr(ord('A') + offset))
 
+            columnNumber = (columnNumber - 1) / 26
+            
+
+        return "".join(result[::-1])
