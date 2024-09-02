@@ -21,23 +21,31 @@ class Solution(object):
             length += 1
             temp = temp.next
         
-        temp = head
-        stack = []
+        mid = head
+        i = 0
+        end = length / 2 if length % 2 == 0 else length / 2 + 1
 
-        for _ in range(length / 2):
-            stack.append(temp.val)
-            temp = temp.next
+        for _ in range(end):
+            mid = mid.next
+            i += 1
         
-        start = length / 2
+        prev, curr = None, head
+        for _ in range(end):
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+        
         if length % 2 == 1:
-            temp = temp.next
-            start += 1
+            prev = prev.next
+            end -= 1
         
-        for _ in range(start, length):
-            popped = stack.pop()
-            if popped != temp.val:
+        for _ in range(end):
+            if prev.val != mid.val:
                 return False
-            temp = temp.next
+            prev = prev.next
+            mid = mid.next
 
         return True
+
     
