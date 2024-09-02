@@ -11,12 +11,9 @@ class Solution(object):
         :rtype: TreeNode
         """
         
-        def inverter(root):
-            if not root:
-                return None
-            root.left, root.right = root.right, root.left
-            inverter(root.left)
-            inverter(root.right)
-            return root
-        
-        return inverter(root)
+        if not root:
+            return None
+        root.left, root.right = root.right, root.left
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+        return root
