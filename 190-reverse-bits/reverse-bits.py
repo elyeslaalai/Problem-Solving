@@ -2,13 +2,12 @@ class Solution:
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
-
-        result = 0
+        
+        temp = 0
 
         for _ in range(32):
 
-            result = (result << 1) + (n & 1)
+            temp = (temp << 1) + (n & 1)
             n >>= 1
-        
-        return result
-        
+
+        return temp
